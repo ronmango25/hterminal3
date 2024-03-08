@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Injector</title>
+    <title>Hack Terminal Web App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Code Injector</h1>
-        <div class="input-section">
-            <h2>Website URL</h2>
-            <input type="text" id="website-url" placeholder="Enter website URL...">
+        <h1 class="title">Hack Terminal</h1>
+        <div class="terminal">
+            <h2 class="section-title">Terminal</h2>
+            <div class="code-box" contenteditable="true" spellcheck="false">
+                <!-- User input code will be inserted here -->
+            </div>
+            <button id="inject-btn">Inject Code</button>
         </div>
-        <div class="input-section">
-            <h2>Code</h2>
-            <textarea id="code-input" placeholder="Enter code here..."></textarea>
+        <div class="website">
+            <h2 class="section-title">Website Code</h2>
+            <textarea id="website-code" placeholder="Enter website code here..."></textarea>
+            <button id="submit-btn">Submit</button>
         </div>
-        <button id="inject-btn">Inject Code</button>
-        <div id="message"></div>
+        <div id="website-content" class="website-content">
+            <!-- Injected website code will be displayed here -->
+        </div>
+        <div id="notification" class="notification"></div>
     </div>
 
     <script src="script.js"></script>
