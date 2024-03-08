@@ -1,34 +1,58 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #000;
+    color: #fff;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .container {
     max-width: 800px;
-    margin: 0 auto;
     padding: 20px;
+    position: relative; /* Position relative for absolute positioning of notifications */
 }
 
-h1 {
+.title {
     text-align: center;
     font-size: 36px;
+    color: #00ff00; /* Green color for the title */
     margin-bottom: 30px;
 }
 
-.input-section {
-    margin-bottom: 20px;
-}
-
-h2 {
+.section-title {
     font-size: 24px;
     margin-bottom: 10px;
+    color: #00ff00; /* Green color for the section titles */
+}
+
+.terminal, .website {
+    background-color: #000;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #00ff00; /* Green border */
+}
+
+.code-box {
+    width: 100%;
+    min-height: 200px;
+    background-color: #222;
+    border: 1px solid #00ff00; /* Green border */
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    overflow: auto;
 }
 
 button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #00ff00; /* Green button */
+    color: #000;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -37,18 +61,37 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #005500; /* Darker green on hover */
 }
 
-input[type="text"],
 textarea {
     width: 100%;
+    height: 200px;
     padding: 10px;
+    margin-bottom: 10px;
     font-family: Arial, sans-serif;
     font-size: 14px;
+    color: #fff;
+    background-color: #222;
+    border: 1px solid #00ff00; /* Green border */
 }
 
-#message {
-    margin-top: 10px;
-    font-weight: bold;
+.notification {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 18px;
+    text-align: center;
+    display: none;
+}
+
+.notification.success {
+    background-color: #00ff00; /* Green for success */
+}
+
+.notification.error {
+    background-color: #ff0000; /* Red for error */
 }
