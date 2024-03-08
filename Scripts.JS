@@ -1,23 +1,32 @@
 document.getElementById('inject-btn').addEventListener('click', function() {
-    // Get the URL and code entered by the user
-    var websiteUrl = document.getElementById('website-url').value;
-    var code = document.getElementById('code-input').value;
+    var terminalCode = document.querySelector('.code-box').innerText;
 
-    // Fetch the website content
-    fetch(websiteUrl)
-        .then(response => response.text())
-        .then(html => {
-            // Inject the code into the website content
-            var updatedHtml = html + '<script>' + code + '</script>';
-            document.getElementById('message').innerText = 'Code injected successfully!';
-            
-            // Update the website content with the injected code
-            var websiteContent = document.createElement('div');
-            websiteContent.innerHTML = updatedHtml;
-            document.body.appendChild(websiteContent);
-        })
-        .catch(error => {
-            // Display an error message if the URL cannot be fetched
-            document.getElementById('message').innerText = 'Error fetching website content: ' + error.message;
-        });
+    try {
+        eval(terminalCode);
+        showNotification('Code successfully executed!', 'success');
+    } catch (error) {
+        console.error('Error executing terminal code:', error);
+        showNotification('Error executing code. Please check the syntax and try again.', 'error');
+    }
 });
+
+document.getElementById('submit-btn').addEventListener('click', function() {
+    var websiteCode = document.getElementById('website-code').value;
+
+    document.getElementById('website-content').innerHTML = websiteCode;
+
+    showNotification('Website content updated successfully.', 'success');
+});
+
+function showNotification(message, type) {
+    var notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.classList.add(type);
+    notification.style.display = 'block';
+
+    setTimeout(function() {
+        notification.classList.remove(type);
+        notification.style.display = 'none';
+    }, 3000); // Hide notification after 3 seconds
+}
+
